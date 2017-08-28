@@ -2,12 +2,11 @@ package com.example.demo.dao;
 
 import com.example.demo.dto.CxsCustomerEmp;
 import com.example.demo.dto.CxsCustomerEmpExample;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-@Mapper
+//@Mapper  取消了这个 需要在application 上加上mapper的接口扫描
 public interface CxsCustomerEmpMapper {
     int countByExample(CxsCustomerEmpExample example);
 
