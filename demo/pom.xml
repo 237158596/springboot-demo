@@ -35,6 +35,41 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.0.31</version>
+		</dependency>
+		<dependency>
+			<groupId>oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<!-- MySql数据库驱动 -->
+		<!--<dependency>-->
+			<!--<groupId> mysql</groupId>-->
+			<!--<artifactId> mysql-connector-java</artifactId>-->
+			<!--<version> 5.0.5</version>-->
+		<!--</dependency>-->
+
+		<!-- mybatis支持 -->
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>1.1.1</version>
+			<!-- 请不要使用1.0.0版本，因为还不支持拦截器插件 -->
+		</dependency>
+
+		<!-- mybatis 分页插件 -->
+		<!-- https://github.com/pagehelper/Mybatis-PageHelper  -->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper</artifactId>
+			<version>4.1.6</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
