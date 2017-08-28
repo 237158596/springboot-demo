@@ -17,3 +17,9 @@
 
 - Spring && Spring security && Spring boot
 - Mybatis
+-Druid 监控
+- mybatis分页
+
+
+#点
+http://localhost:8080/druid/login.html
