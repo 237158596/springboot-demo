@@ -4,7 +4,7 @@
 	<!--彩色的终端-->
 	<!--<substitutionProperty name="default_pattern" value="%yellow(%d{yyyy-MM-dd HH:mm:ss.SSS}) [%thread] %highlight(%-5level) %green(%logger{36}) %line - %msg%n" />-->
 
-	<substitutionProperty name="default_pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} %line - %msg%n" />
+	<substitutionProperty name="default_pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %X{tuid} %-5level %logger{36} %line - %msg%n" />
 
 	<substitutionProperty name="logpath.basedir" value="/Users/admin/Documents/logs" />
 

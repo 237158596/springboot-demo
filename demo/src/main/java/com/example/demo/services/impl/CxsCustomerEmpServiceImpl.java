@@ -1,10 +1,13 @@
 package com.example.demo.services.impl;
 
+import com.example.demo.controller.LoginController;
 import com.example.demo.dao.CxsCustomerEmpMapper;
 import com.example.demo.dto.CxsCustomerEmp;
 import com.example.demo.dto.CxsCustomerEmpExample;
 import com.example.demo.interceptor.testOperation;
 import com.example.demo.services.CxsCustomerEmpService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +19,7 @@ import java.util.List;
  */
 @Service
 public class CxsCustomerEmpServiceImpl implements CxsCustomerEmpService {
+    private static final Logger logger = LoggerFactory.getLogger(CxsCustomerEmpServiceImpl.class);
 
     @Autowired
     private CxsCustomerEmpMapper cxsCustomerEmpMapper;
@@ -23,6 +27,7 @@ public class CxsCustomerEmpServiceImpl implements CxsCustomerEmpService {
     @testOperation(code = "1111")
     @Override
     public CxsCustomerEmp getByApplyCode(String applyCode) {
+        logger.info("applyCode:{}",applyCode);
         CxsCustomerEmpExample example=new CxsCustomerEmpExample();
         example.createCriteria().andApplyCodeEqualTo(applyCode);
         return cxsCustomerEmpMapper.selectByExample(example).get(0);
@@ -31,6 +36,8 @@ public class CxsCustomerEmpServiceImpl implements CxsCustomerEmpService {
     @testOperation(code = "2222")
     @Transactional(rollbackFor = Exception.class)
     public   List<CxsCustomerEmp> getByCompName(String compName){
+
+        logger.info("compName:{}",compName);
         CxsCustomerEmpExample example=new CxsCustomerEmpExample();
         example.createCriteria().andCompNameEqualTo(compName);
 

@@ -23,6 +23,14 @@ public class LoginController {
     @Autowired
     private CxsCustomerEmpService cxsCustomerEmpService;
 
+
+
+    @RequestMapping("/get")
+    public  String get(){
+        logger.info("info ....哈哈");
+        return  "get...哈哈";
+    }
+
     @RequestMapping("/getUser")
     public  String getUser(){
 
