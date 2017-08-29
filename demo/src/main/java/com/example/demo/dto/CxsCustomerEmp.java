@@ -1,8 +1,11 @@
 package com.example.demo.dto;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Date;
 
 public class CxsCustomerEmp {
+    @ApiModelProperty(value = "applyCode进件单号")
     private String applyCode;
 
     private String compName;
