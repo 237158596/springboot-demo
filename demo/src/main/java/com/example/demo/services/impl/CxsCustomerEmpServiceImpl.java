@@ -28,6 +28,14 @@ public class CxsCustomerEmpServiceImpl implements CxsCustomerEmpService {
     public   List<CxsCustomerEmp> getByCompName(String compName){
         CxsCustomerEmpExample example=new CxsCustomerEmpExample();
         example.createCriteria().andCompNameEqualTo(compName);
+
+        CxsCustomerEmpExample example2=new CxsCustomerEmpExample();
+        example2.createCriteria().andApplyCodeEqualTo("AP20170815192552201");
+
+        CxsCustomerEmp record=new CxsCustomerEmp();
+        record.setRemarks("11111");
+        cxsCustomerEmpMapper.updateByExampleSelective(record,example2);
+
         return cxsCustomerEmpMapper.selectByExample(example);
 
     }
