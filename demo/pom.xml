@@ -99,6 +99,14 @@
 			<artifactId>guava</artifactId>
 			<version>18.0</version>
 		</dependency>
+
+		<!-- aspectjtools -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjtools</artifactId>
+			<version>1.7.4</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

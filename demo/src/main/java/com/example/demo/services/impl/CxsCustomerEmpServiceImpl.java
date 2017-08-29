@@ -3,6 +3,7 @@ package com.example.demo.services.impl;
 import com.example.demo.dao.CxsCustomerEmpMapper;
 import com.example.demo.dto.CxsCustomerEmp;
 import com.example.demo.dto.CxsCustomerEmpExample;
+import com.example.demo.interceptor.testOperation;
 import com.example.demo.services.CxsCustomerEmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ public class CxsCustomerEmpServiceImpl implements CxsCustomerEmpService {
     @Autowired
     private CxsCustomerEmpMapper cxsCustomerEmpMapper;
 
-   
+    @testOperation(code = "1111")
     @Override
     public CxsCustomerEmp getByApplyCode(String applyCode) {
         CxsCustomerEmpExample example=new CxsCustomerEmpExample();
@@ -27,6 +28,7 @@ public class CxsCustomerEmpServiceImpl implements CxsCustomerEmpService {
         return cxsCustomerEmpMapper.selectByExample(example).get(0);
     }
 
+    @testOperation(code = "2222")
     @Transactional(rollbackFor = Exception.class)
     public   List<CxsCustomerEmp> getByCompName(String compName){
         CxsCustomerEmpExample example=new CxsCustomerEmpExample();
