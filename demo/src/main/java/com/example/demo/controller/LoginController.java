@@ -29,6 +29,7 @@ public class LoginController {
         logger.info("info ....哈哈");
         logger.warn("warn ....哈哈");
         logger.error("error ....哈哈");
+        CxsCustomerEmp cxsCustomerEmp= cxsCustomerEmpService.getByApplyCode("AP20170815192552201");
         return  "getUser...哈哈";
     }
 
