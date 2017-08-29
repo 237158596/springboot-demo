@@ -28,6 +28,9 @@ public class LoginController {
     @RequestMapping("/get")
     public  String get(){
         logger.info("info ....哈哈");
+        int a=1;
+        int b=0;
+        a=a/b;
         return  "get...哈哈";
     }
 

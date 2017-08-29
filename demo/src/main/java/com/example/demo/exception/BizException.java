@@ -1,11 +1,6 @@
 package com.example.demo.exception;
 
-/**
- *
- * 程序错误, 日志级别为error, 需要开发干预
- *
- * Created by aaron on 15/6/23.
- */
+
 public class BizException extends TipException {
 
     /**

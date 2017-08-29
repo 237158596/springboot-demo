@@ -1,10 +1,6 @@
 package com.example.demo.exception;
 
-/**
- * 定制化错误描述
- * 错误code固定
- * Created by fuhong on 15/10/29.
- */
+
 public class CustomError implements BaseError{
 
     private String code;

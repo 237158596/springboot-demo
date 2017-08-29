@@ -1,11 +1,6 @@
 package com.example.demo.exception;
 
-/**
- *
- * 用户提示, 日志级别为warn, 当出现此类异常时候, 不需要开发介入
- *
- * Created by fuhong on 16/5/18.
- */
+
 public class TipException extends RuntimeException {
 	private static final long serialVersionUID = -4588378191533057628L;
 	
