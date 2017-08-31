@@ -1,8 +1,12 @@
 package com.example.demo.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.example.demo.config.jedis.support.util.JedisUtil;
+import com.example.demo.config.thread.ThreadPoolConfig;
 import com.example.demo.dto.CxsCustomerEmp;
 import com.example.demo.services.CxsCustomerEmpService;
+import com.example.demo.testActions.BuyService;
+import com.example.demo.utils.RedisTemplateUtil;
 import com.github.pagehelper.PageHelper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -16,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created  at 2017/8/25.
@@ -29,6 +34,13 @@ public class LoginController {
 
     @Autowired
     private CxsCustomerEmpService cxsCustomerEmpService;
+
+    @Autowired
+    private RedisTemplateUtil redisTemplateUtil;
+
+    @Autowired
+    private ThreadPoolConfig threadPoolConfig;
+
 
 
     @ApiOperation(value="get 操作")
@@ -60,5 +72,35 @@ public class LoginController {
         logger.info(ls.toString());
         return  ls;
     }
+
+
+    @ApiOperation(value="redis 操作")
+    @RequestMapping(value = "/redis",method= RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    public  String redis(){
+        logger.info("redis ....哈哈");
+
+        JedisUtil.getInstance().getJedis().set("test12","111");
+
+        JedisUtil.getInstance().getJedis().get("test12");
+        redisTemplateUtil.getValue("test12");
+
+        return "";
+    }
+
+
+
+    @ApiOperation(value="reredisConcurrentdis 并发测试")
+    @RequestMapping(value = "/redisConcurrent",method= RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    public  String redisConcurrent(String sku) throws ExecutionException, InterruptedException {
+        String key="asdader001511";
+
+        logger.info("redisConcurrent.......sku="+sku);
+
+        BuyService buyService=  new BuyService(threadPoolConfig.jobExecutor(),redisTemplateUtil);
+        buyService.wannaBuy(sku);
+
+        return  buyService.getBuyResult();
+    }
+
 
 }
