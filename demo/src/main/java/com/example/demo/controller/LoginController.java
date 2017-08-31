@@ -7,6 +7,7 @@ import com.example.demo.dto.CxsCustomerEmp;
 import com.example.demo.services.CxsCustomerEmpService;
 import com.example.demo.testActions.BuyService;
 import com.example.demo.utils.RedisTemplateUtil;
+import com.example.demo.utils.RedisUtilStatic;
 import com.github.pagehelper.PageHelper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -92,7 +93,6 @@ public class LoginController {
     @ApiOperation(value="reredisConcurrentdis 并发测试")
     @RequestMapping(value = "/redisConcurrent",method= RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public  String redisConcurrent(String sku) throws ExecutionException, InterruptedException {
-        String key="asdader001511";
 
         logger.info("redisConcurrent.......sku="+sku);
 
@@ -102,5 +102,17 @@ public class LoginController {
         return  buyService.getBuyResult();
     }
 
+
+    @ApiOperation(value="reredisConcurrentdis 并发测试")
+    @RequestMapping(value = "/redisConcurrent2",method= RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    public  String redisConcurrent2(String sku) throws ExecutionException, InterruptedException {
+
+        logger.info("redisConcurrent.......sku="+sku);
+        BuyService buyService=  new BuyService(threadPoolConfig.jobExecutor());
+        buyService.wannaBuy(sku);
+        String result=buyService.getBuyResult();
+        System.out.println(RedisUtilStatic.getValue(sku));
+        return result;
+    }
 
 }

@@ -23,9 +23,14 @@ public class BuyGoodsWorker implements Callable<String> {
         this.redisTemplateUtil=redisTemplateUtil;
     }
 
+    public BuyGoodsWorker(String sku, int buyCount) {
+        this.buyCount = buyCount;
+        this.sku = sku;
+    }
 
     @Override
     public String call() throws Exception {
-        return new GoodsService().buy2(sku,buyCount,redisTemplateUtil);
+        //return new GoodsService().buy2(sku,buyCount,redisTemplateUtil);
+        return new GoodsService().buy3(sku,buyCount);
     }
 }

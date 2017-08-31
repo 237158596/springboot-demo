@@ -23,6 +23,10 @@ public class BuyService {
         this.redisTemplateUtil=redisTemplateUtil;
     }
 
+    public  BuyService(ExecutorService executor){
+        this.cs=new ExecutorCompletionService<String>(executor);
+    }
+
 
     public  void wannaBuy(String sku){
         for(int i=0;i<buyPeopleCount;i++) {

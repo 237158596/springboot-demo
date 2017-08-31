@@ -2,6 +2,7 @@ package com.example.demo.testActions;
 
 import com.example.demo.config.jedis.support.util.JedisUtil;
 import com.example.demo.utils.RedisTemplateUtil;
+import com.example.demo.utils.RedisUtilStatic;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -48,7 +49,7 @@ public class GoodsService {
 
 
     public String buy2(String sku, int buyCount,RedisTemplateUtil redisTemplateUtil) {
-        String msg = "";
+        String msg = ""+ System.currentTimeMillis()+"--";
         msg+=sku +" 尝试消耗库存buyCount= "+buyCount+"  目前redis 购买数据 "+ redisTemplateUtil.getValue(sku)+" -----";
         long count = redisTemplateUtil.incr(sku, buyCount);
         if (count > goodsCount) {
@@ -58,6 +59,21 @@ public class GoodsService {
             msg += " >>>>>>>成功消耗库存：  " + String.valueOf(buyCount) + "  订单号 " + UUID.randomUUID().toString();
         }
 
+        return msg;
+    }
+
+
+    public String buy3(String sku, int buyCount) {
+        String msg = ""+ System.currentTimeMillis()+"--";
+        msg+=sku +" 尝试消耗库存buyCount= "+buyCount+"  目前redis 购买数据 "+ RedisUtilStatic.getValue(sku)+" -----";
+        long count = RedisUtilStatic.incr(sku, buyCount);
+        if (count > goodsCount) {
+            RedisUtilStatic.decr(sku, buyCount);
+            msg += " 库存不够，归还数据 :"+String.valueOf(buyCount);
+        } else {
+            msg += " >>>>>>>成功消耗库存：  " + String.valueOf(buyCount) + "  订单号 " + UUID.randomUUID().toString();
+        }
+            logger.info(msg);
         return msg;
     }
 

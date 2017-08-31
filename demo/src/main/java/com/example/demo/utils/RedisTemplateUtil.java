@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created  at 2017/8/29.
  */
-@Component("redisUtil")
+@Component("redisTemplateUtil")
 public class RedisTemplateUtil {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
