@@ -30,7 +30,7 @@ public class HttpUtil {
         return httpResponse;
     }
 
-
+     // .header("accept", "application/json")
     protected  static HttpResponse<JsonNode> post(String apiUrl ,Map<String, Object> apiParams) throws UnirestException {
         logger.info("请求接口 - 请求参数, url：{}, params：{}", apiUrl, apiParams);
         if (apiParams == null || apiParams.isEmpty()) {
