@@ -51,4 +51,24 @@ public class CxsCustomerEmpServiceImpl implements CxsCustomerEmpService {
         return cxsCustomerEmpMapper.selectByExample(example);
 
     }
+
+    @Transactional(rollbackFor = Exception.class)
+    public   void transactionalTest(){
+        CxsCustomerEmpExample example2=new CxsCustomerEmpExample();
+        example2.createCriteria().andApplyCodeEqualTo("AP20170815192552201");
+
+        CxsCustomerEmp record=new CxsCustomerEmp();
+        record.setRemarks("333");
+        cxsCustomerEmpMapper.updateByExampleSelective(record,example2);
+
+        CxsCustomerEmpExample example3=new CxsCustomerEmpExample();
+        example3.createCriteria().andApplyCodeEqualTo("AP20170815192552202");
+        int a=1;int b=0;
+        a=a/b;
+        CxsCustomerEmp record2=new CxsCustomerEmp();
+        record.setRemarks("444");
+        cxsCustomerEmpMapper.updateByExampleSelective(record2,example3);
+
+
+    }
 }

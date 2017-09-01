@@ -12,4 +12,6 @@ public interface CxsCustomerEmpService {
 
     List<CxsCustomerEmp> getByCompName(String compName);
 
+    void transactionalTest();
+
 }

@@ -43,6 +43,14 @@ public class LoginController {
     private ThreadPoolConfig threadPoolConfig;
 
 
+    @RequestMapping(value = "/transactionalTest",method= RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    public  String transactionalTest(){
+        logger.info("transactionalTest ....哈哈");
+        cxsCustomerEmpService.transactionalTest();
+        return JSON.toJSONString("transactionalTest ....哈哈");
+    }
+
+
 
     @ApiOperation(value="get 操作")
     @RequestMapping(value = "/get",method= RequestMethod.GET, produces = "application/json;charset=UTF-8")
