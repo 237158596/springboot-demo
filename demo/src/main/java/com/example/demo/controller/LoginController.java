@@ -16,6 +16,7 @@ import io.swagger.annotations.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,6 +42,13 @@ public class LoginController {
 
     @Autowired
     private ThreadPoolConfig threadPoolConfig;
+
+
+    @RequestMapping(value = "/test1",method= RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public  String  test1(@RequestBody CxsCustomerEmp cxsCustomerEmp){
+        System.out.println(cxsCustomerEmp);
+        return "1111";
+    }
 
 
     @RequestMapping(value = "/transactionalTest",method= RequestMethod.GET, produces = "application/json;charset=UTF-8")
