@@ -2,9 +2,12 @@ package com.example.demo.dto;
 
 import io.swagger.annotations.ApiModelProperty;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class CxsCustomerEmp {
+public class CxsCustomerEmp implements Serializable {
+
+    private static final long serialVersionUID = -1807182418062245957L;
     @ApiModelProperty(value = "applyCode进件单号")
     private String applyCode;
 

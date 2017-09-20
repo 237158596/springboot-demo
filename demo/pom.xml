@@ -130,6 +130,13 @@
 			<version>1.4.9</version>
 		</dependency>
 
+
+		<!--cache-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>
