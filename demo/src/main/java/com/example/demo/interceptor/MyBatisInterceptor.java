@@ -31,8 +31,8 @@ public class MyBatisInterceptor implements Interceptor {
     private static final String UPDATEDUSERNAME = "updatedUserName";
     private static final String UPDATEDUSERID = "updatedUserId";
     private static final String UPDATEDTIME = "updatedTime";
-    private static final String LOWER_CASE_PRIMARY_KEY = "id";
-    private static final String UPPER_CASE_PRIMARY_KEY = "ID";
+//    private static final String LOWER_CASE_PRIMARY_KEY = "id";
+//    private static final String UPPER_CASE_PRIMARY_KEY = "ID";
 
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
@@ -132,12 +132,13 @@ public class MyBatisInterceptor implements Interceptor {
                 field.setAccessible(true);
                 field.set(parameter, userName);
                 field.setAccessible(false);
-            } else if ((LOWER_CASE_PRIMARY_KEY.equals(field.getName()) || UPPER_CASE_PRIMARY_KEY.equals(field.getName()))
-                    && null == getFieldValue(field, parameter)) {
-                field.setAccessible(true);
-                field.set(parameter, UUID.randomUUID().toString().replaceAll("-", "").toUpperCase());
-                field.setAccessible(false);
             }
+//            else if ((LOWER_CASE_PRIMARY_KEY.equals(field.getName()) || UPPER_CASE_PRIMARY_KEY.equals(field.getName()))
+//                    && null == getFieldValue(field, parameter)) {
+//                field.setAccessible(true);
+//                field.set(parameter, UUID.randomUUID().toString().replaceAll("-", "").toUpperCase());
+//                field.setAccessible(false);
+//            }
         }
     }
 
